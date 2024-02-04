@@ -313,10 +313,12 @@ function sendMinedBoc(wallet, seqno, keyPair, giverAddress, boc) {
                     yield tonapiClient.blockchain.sendBlockchainMessage({
                         boc: msg.toBoc().toString('base64'),
                     });
+                    console.log('Tonapi ok');
                     break;
                     // return res
                 }
                 catch (e) {
+                    console.log('Tonapi error '+e.status+' '+e.message);
                     // lastError = err
                     k++;
                     if (e.status === 429) {
